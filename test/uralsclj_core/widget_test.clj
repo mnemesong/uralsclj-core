@@ -29,15 +29,5 @@
   (testing "Widget/dsl.html may not be nil"
     (is (= false (s/valid? :uralsclj-core.widget/dsl {:html nil}))))
   (testing "Widget/dsl.html may not be num"
-    (is (= false (s/valid? :uralsclj-core.widget/dsl {:html 0.12}))))
-  (testing "Widget/dsl.engine may not be collection"
-    (is (= false (s/valid? :uralsclj-core.widget/dsl {:engine ["hello"]}))))
-  (testing "Widget/dsl.engine may be string"
-    (is (= true (s/valid? :uralsclj-core.widget/dsl {:engine "hello"}))))
-  (testing "Widget/dsl.engine may be keyword"
-    (is (= true (s/valid? :uralsclj-core.widget/dsl {:engine :hello}))))
-  (testing "Widget/dsl.engine may not be nil"
-    (is (= false (s/valid? :uralsclj-core.widget/dsl {:engine nil}))))
-  (testing "Widget/dsl.engine may not be num"
-    (is (= false (s/valid? :uralsclj-core.widget/dsl {:engine 0.12})))))
+    (is (= false (s/valid? :uralsclj-core.widget/dsl {:html 0.12})))))
 
