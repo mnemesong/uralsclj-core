@@ -4,18 +4,26 @@
             [clojure.spec.alpha :as s]))
 
 (deftest widget-dsl-test
-  (testing "Widget dsl empty"
+  (testing "Widget/dsl may be empty"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {}))))
-  (testing "Widget dsl contains css-collection"
+  (testing "Widget/dsl.css may be collection"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {:css ["hello"]}))))
-  (testing "Widget dsl contains css-string"
+  (testing "Widget/dsl.css may be string"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {:css "hello"}))))
-  (testing "Widget dsl contains js-collection"
+  (testing "Widget/dsl.css may not be nil"
+    (is (= false (s/valid? :uralsclj-core.widget/dsl {:css nil}))))
+  (testing "Widget/dsl.css may not be num"
+    (is (= false (s/valid? :uralsclj-core.widget/dsl {:css 12}))))
+  (testing "Widget/dsl.js may be collection"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {:js ["hello"]}))))
-  (testing "Widget dsl contains js-string"
+  (testing "Widget/dsl.js may be string"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {:js "hello"}))))
-  (testing "Widget dsl contains html-collection"
+  (testing "Widget/dsl.js may not be nil"
+    (is (= false (s/valid? :uralsclj-core.widget/dsl {:js nil}))))
+  (testing "Widget/dsl.js may not be num"
+    (is (= false (s/valid? :uralsclj-core.widget/dsl {:js 0.12}))))
+  (testing "Widget/dsl.html may be collection"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {:html ["hello"]}))))
-  (testing "Widget dsl contains html-string"
+  (testing "Widget/dsl.html may be string"
     (is (= true (s/valid? :uralsclj-core.widget/dsl {:html "hello"})))))
 
