@@ -45,3 +45,9 @@
   (testing "has-no-empty-prop on empty string"
     (is (= false (has-no-empty-prop {:html ""} :html)))))
 
+(deftest insert-attr-to-template-test
+  (testing "insert-attr-to-template no match"
+    (is (= "{{ajja}}" (insert-attr-to-template "{{ajja}}" "html" "gogo"))))
+  (testing "insert-attr-to-template match"
+    (is (= "hello gogo!" (insert-attr-to-template "hello {{html}}!" "html" "gogo")))))
+

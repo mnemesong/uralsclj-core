@@ -17,12 +17,9 @@
     (contains? w p) 
     (> (count (get w p)) 0)))
 
-;;(defn construct-dsl [html js css]
-;;  {:html html :js js :css css})
-;;
-;;(defn- insert-attr-to-template [s srch rplc]
-;;  (replace (str "{{" s "}}") #"srch" rplc))
-;;
+(defn insert-attr-to-template [s srch rplc]
+  (str/replace s (re-pattern (str "\\{\\{" srch "\\}\\}")) rplc))
+
 ;;(defn- model-print-reducer [acc c]
 ;;  {:pre [
 ;;    (string? acc) 
