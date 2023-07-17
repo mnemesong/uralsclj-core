@@ -1,6 +1,6 @@
 (ns uralsclj-core.widget-test
   (:require [clojure.test :refer :all]
-            [uralsclj-core.widget :refer :all]
+            [uralsclj-core.widget :as w]
             [clojure.spec.alpha :as s]))
 
 (deftest widget-t-test
@@ -33,15 +33,21 @@
 
 (deftest add-html-test
   (testing "add-html correctly add html"
-    (is (= {:html "tet-html" :js "start-js"} (add-html {:js "start-js"} "tet-html")))))
+    (is (= {:html "tet-html" :js "start-js"} (w/add-html {:js "start-js"} "tet-html")))))
 
 (deftest has-no-empty-prop-test
   (testing "has-no-empty-prop on not empty prop hashmap exist prop"
-    (is (= true (has-no-empty-prop {:html "alola"} :html))))
+    (is (= true (w/has-no-empty-prop {:html "alola"} :html))))
   (testing "has-no-empty-prop on not empty prop hashmap not exist prop"
-    (is (= false (has-no-empty-prop {:html "alola"} :js))))
+    (is (= false (w/has-no-empty-prop {:html "alola"} :js))))
   (testing "has-no-empty-prop on nil"
-    (is (= false (has-no-empty-prop {:html nil} :html))))
+    (is (= false (w/has-no-empty-prop {:html nil} :html))))
   (testing "has-no-empty-prop on empty string"
-    (is (= false (has-no-empty-prop {:html ""} :html)))))
+    (is (= false (w/has-no-empty-prop {:html ""} :html)))))
 
+(deftest replace-property-test 
+  (testing "replace-property-test"
+    (is (= {:html "Hello John!", :js "Hello {{a1}}!"}
+           (w/replace-property {:html "Hello {{a1}}!" :js "Hello {{a1}}!"} 
+                               :html 
+                               {:a1 "John" :a2 "Mike"})))))

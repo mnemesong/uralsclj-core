@@ -1,6 +1,6 @@
 (ns uralsclj-core.model
-  (:require [clojure.spec.alpha :as s])
-  (:require [clojure.string :as str]))
+  (:require [clojure.spec.alpha :as s]
+            [clojure.string :as str]))
 
 (s/def ::t coll?)
 

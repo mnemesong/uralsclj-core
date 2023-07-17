@@ -1,6 +1,7 @@
 (ns uralsclj-core.widget
-  (:require [clojure.spec.alpha :as s])
-  (:require [clojure.string :as str]))
+  (:require [clojure.spec.alpha :as s]
+            [clojure.string :as str]
+            [uralsclj-core.model :as m]))
 
 (s/def ::html string?)
 (s/def ::js string?)
@@ -17,13 +18,12 @@
     (contains? w p) 
     (> (count (get w p)) 0)))
 
-;; взять функцию replace-all-model из model.cljc
-;;(defn replace-in-widget-property [w k m]
-;;  (if 
-;;    (has-no-empty-prop w k) 
-;;    (assoc w k (replace-all-model (get w k) m))
-;;    w))
-;;
+(defn replace-property [w k m]
+  (if 
+    (has-no-empty-prop w k) 
+    (assoc w k (m/render-to-template (get w k) m))
+    w))
+
 ;;;; Доделать
 ;;(defn render-widget [w m]
 ;;  {:pre [
