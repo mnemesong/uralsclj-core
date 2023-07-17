@@ -24,14 +24,9 @@
     (assoc w k (m/render-to-template (get w k) m))
     w))
 
-;;;; Доделать
-;;(defn render-widget [w m]
-;;  {:pre [
-;;    (s/valid? ::t w) 
-;;    (coll? m)
-;;  ]}
-;;  (-> w
-;;      (replace-in-widget-property :html m)
-;;      (replace-in-widget-property :js m)
-;;      (replace-in-widget-property :css m)))
-;;
+(defn render [w m]
+  {:pre [(s/valid? ::t w) (coll? m)]}
+  (-> w
+      (replace-property :html m)
+      (replace-property :js m)
+      (replace-property :css m)))
