@@ -55,6 +55,5 @@
 (deftest render-test
   (testing "render"
     (is (= {:html "Hello Mike!", :js "Aaa!"}
-           (w/render 
-            {:html "Hello {{a1}}" :js "{{a2}}!"} 
-            {:a1 "Mike!" :a2 "Aaa"}))))) 
+           (w/render {:html "Hello {{a1}}" :js "{{a2}}!"} 
+                     {:a1 "Mike!" :a2 "Aaa"}))))) 
