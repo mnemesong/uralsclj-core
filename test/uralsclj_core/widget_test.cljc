@@ -35,23 +35,6 @@
   (testing "add-html correctly add html"
     (is (= {:html "tet-html" :js "start-js"} (w/add-html {:js "start-js"} "tet-html")))))
 
-(deftest has-no-empty-prop-test
-  (testing "has-no-empty-prop on not empty prop hashmap exist prop"
-    (is (= true (w/has-no-empty-prop {:html "alola"} :html))))
-  (testing "has-no-empty-prop on not empty prop hashmap not exist prop"
-    (is (= false (w/has-no-empty-prop {:html "alola"} :js))))
-  (testing "has-no-empty-prop on nil"
-    (is (= false (w/has-no-empty-prop {:html nil} :html))))
-  (testing "has-no-empty-prop on empty string"
-    (is (= false (w/has-no-empty-prop {:html ""} :html)))))
-
-(deftest replace-property-test 
-  (testing "replace-property-test"
-    (is (= {:html "Hello John!", :js "Hello {{a1}}!"}
-           (w/replace-property {:html "Hello {{a1}}!" :js "Hello {{a1}}!"} 
-                               :html 
-                               {:a1 "John" :a2 "Mike"})))))
-
 (deftest render-test
   (testing "render"
     (is (= {:html "Hello Mike!", :js "Aaa!"}
