@@ -15,3 +15,9 @@
         (has-no-empty-prop s k) 
         (assoc s k (m/render-to-template (get s k) m))
         s))
+
+(defn has-keys? 
+    ([c] (> (count c) 0))
+    ([c ks] (->> ks
+        (map #(contains? c %))
+        (every? true?))))

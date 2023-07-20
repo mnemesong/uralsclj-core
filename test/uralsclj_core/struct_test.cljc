@@ -22,3 +22,13 @@
                 } 
                 :html 
                 {:a1 "John" :a2 "Mike"})))))
+
+(deftest has-keys?-test
+  (testing "has-keys on empty struct"
+    (is (= false (struct/has-keys? {}))))
+  (testing "has-keys without args"
+    (is (= true (struct/has-keys? {:abba :djsa}))))
+  (testing "has special keys 1"
+    (is (= false (struct/has-keys? {:abba :djsa :uat 12} [:uur]))))
+  (testing "has special keys 2"
+    (is (= true (struct/has-keys? {:abba :djsa :uur 12} [:uur])))))

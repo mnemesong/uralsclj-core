@@ -9,4 +9,3 @@
 (s/def ::host string?)
 (s/def ::t 
   (s/keys :req-un [::name ::template ::init ::host]))
-
