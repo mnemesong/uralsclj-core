@@ -1,7 +1,10 @@
 (ns uralsclj-core.app-test
   (:require [clojure.test :refer :all]
             [uralsclj-core.app :as app]
+            [uralsclj-core.event :as e]
             [clojure.spec.alpha :as s]))
+
+(defmethod e/handle "some" [h e s d] s)
 
 (deftest valid?-test
     (testing "valid case"
@@ -12,7 +15,7 @@
                 :init []
                 :host "#dasd"
             }]
-            :events ["sad" 12]
+            :events {"#some" "some"}
             :deps {:dep1 2354}
         }))))
     (testing "invalid case"

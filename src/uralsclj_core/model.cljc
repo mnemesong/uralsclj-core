@@ -2,7 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [clojure.string :as str]))
 
-(s/def ::t coll?)
+(s/def ::t map?)
 
 (defn- insert-attr-to-template [s srch rplc]
   (str/replace s (re-pattern (str "\\{\\{" srch "\\}\\}")) rplc))
